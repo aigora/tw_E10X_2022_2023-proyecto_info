@@ -8,7 +8,11 @@ int main()
     printf("1.A\n");
     printf("2.B\n");
     printf("3.C\n");
-    printf("4.C\n");
+    printf("4.D\n");
+    scanf("%i", &n);
+
+    printf("Seleccionaste %i", n);
+
 
 
 
