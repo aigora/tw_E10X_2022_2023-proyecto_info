@@ -1,4 +1,5 @@
 # [Título del trabajo]
+Proyecto_Info
 
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
@@ -7,6 +8,8 @@
 [Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
 
 José Antonio Anampa Quispe, [ https://github.com/JoseAnampa ]
+Adrián Vallejo Gil @AdriUpm
+
 
 ## Objetivos del trabajo
 
