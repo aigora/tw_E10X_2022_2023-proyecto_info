@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct{
-    char filai[2000]
+typedef struct
+{
+    char filai[2000];
 }lines;
 
 //Funcion que lee el archivo original y lo copia en un archivo auxiliar
