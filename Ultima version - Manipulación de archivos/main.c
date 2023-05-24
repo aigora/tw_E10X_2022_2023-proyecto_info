@@ -3,32 +3,47 @@
 
 int main(){
 
+    _Bool booleano;
+
+    booleano=0;
+
     //lee un archivo y lo copia en uno nuevo (archivo_auxiliar).
     //necesita el nombre del archivo. Ejemplo:
-    //lectura("generacion_por_tecnologias_21_22.csv",1);
+    //lectura("generacion_por_tecnologias_21_22_puntos.csv",1);
+
+
 
     //muestra el documento entero
-    //mostrar_doc();
+    //mostrar_doc(booleano);
+
+
 
     //sustituye un dato y lo imprime en el archivo. necesita una fila, columna y texto
     //variables: Fila elegida, columna elegida, tipo de separador decimal, fila de fecha,
     //elección mostrar una generación de energía con una columna (1); necesita las primera cuatro variables,
     //sustituir (2); necesita que las dos primeras variables sean la fila de sustitución y la columna de sustitución respectivamente,
     //también necesita el texto nuevo teniendo sus separadores inciales y finales
+    //Hay que identificar el separador decimal
 
-    //mostrar dato:
-    //seleccion_dato(6,2,',',5,1,";texto basura;");
+    //mostrar dato
+    //seleccion_dato(6,2,'.',5,1,";texto basura;",0);
 
     //sustitución (solo funciona para archivos con punto como separador decimal y no se puede sustituir ni la primera ni la última fila de datos):
-    //seleccion_dato(9,3,',',5,2,",texto nuevo,");
+    //La variable 'booleano' deberá ser 0 si no ha habido cambios en el archivo, pero si se realiza una sustitución, deberá tomar el varlor 1
+
+    //seleccion_dato(6,3,'.',5,2,",texto nuevo,",booleano);
+
 
     //muestra la primera columna y otra a eleccion hasta la ultima fila
     //necesita las primeras cuatro variables y la fila de fecha
+
     //int i, filas=lectura("generacion_por_tecnologias_21_22.csv",0);
     //for(i=5;i<=filas;i++){
-    //   seleccion_dato(i,2,',',5,1,"texto basura");
+    //   seleccion_dato(i,2,'.',5,1,"texto basura",0);
     //   printf("\n");
     //}
+
+
 
 
     //funcion desicion, variables; fila de datos, columna de datos, tipo de separador decimal, fila de fecha,

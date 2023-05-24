@@ -50,7 +50,7 @@ int lectura(char documento[],int inicio){
 
 
 //Muestra el archivo auxiliar por filas en la terminal
-void mostrar_doc(){
+void mostrar_doc(int booleano){
 
     //uso de la funcion lectura para el numero de filas del archivo
     int i,filas=lectura("archivo_auxiliar.csv",0);
@@ -58,7 +58,12 @@ void mostrar_doc(){
     lines almacenaje[100];
 
     FILE *archivo;
-    archivo=fopen("archivo_auxiliar.csv","r");
+    if(booleano==0){
+        archivo=fopen("archivo_auxiliar.csv","r");
+    }
+    else if(booleano==1){
+        archivo=fopen("archivo_sustituto.txt","r");
+    }
 
     if(archivo==NULL){
         printf("No se ha encontrado el archivo\n");
@@ -82,7 +87,7 @@ void mostrar_doc(){
 //Las variables de las que depende son: fila y columna seleccionadas, tipo de separador decimal,
 //localización de la fila de fechas (siguiendo el modelo de archivo) y texto de sustitución
 //Dependiendo de la variable 'elección' realizará 3 tareas que se explicarán más adelante
-int seleccion_dato(int n_fila, int n_columna,char decimal,int fila_fecha,int eleccion,char texto_sust[]){
+int seleccion_dato(int n_fila, int n_columna,char decimal,int fila_fecha,int eleccion,char texto_sust[],int booleano){
 
     FILE *sust;
 
@@ -284,7 +289,7 @@ int seleccion_dato(int n_fila, int n_columna,char decimal,int fila_fecha,int ele
     else if(eleccion==2){
         fila_sust=n_fila;
         columna_sust=n_columna;
-        sustitucion(almacenaje[fila_sust-1].filai,texto_sust,columna_sust+1,separador,fila_sust);
+        sustitucion(almacenaje[fila_sust-1].filai,texto_sust,columna_sust+1,separador,fila_sust,booleano);
     }//Imprimir en un archivo los datos de una columna entera o de una fila entera (Esta opción solo está disponible para la función 'desicion' que se explicará más adelante)
     else if(eleccion=3){
         sust=fopen("archivo_vectores.txt","a+");
@@ -344,19 +349,19 @@ void desicion(int fila, int columna, char decimal,int fila_fecha, int seleccion)
 
     int i;
     int filas=lectura("archivo_auxiliar.csv",0);
-    int columnas=seleccion_dato(0,0,decimal,fila_fecha,0,"x")+1;
+    int columnas=seleccion_dato(0,0,decimal,fila_fecha,0,"x",0)+1;
 
     remove("archivo_vectores.txt");
 
     switch(seleccion){
         case 1:
             for(i=fila_fecha+1;i<filas+1;i++){
-                seleccion_dato(i,columna,decimal,fila_fecha,3,"x");
+                seleccion_dato(i,columna,decimal,fila_fecha,3,"x",0);
             }
         break;
         case 2:
             for(i=2;i<columnas+1;i++){
-                seleccion_dato(fila,i,decimal,fila_fecha,3,"x");
+                seleccion_dato(fila,i,decimal,fila_fecha,3,"x",0);
             }
         break;
         default:
@@ -368,7 +373,7 @@ void desicion(int fila, int columna, char decimal,int fila_fecha, int seleccion)
 //Esta función hace uso de una cadena de texto de una fila en específico, localiza la posición de los separadores anterior y posterior de la columna elegida
 //y almacena en dos cadenas de caracteres todo el texto anterior al separador anterior y todo el texto posterior al separador posterior, en una tercera cadena de caracteres llamada 'sustituto'
 //une el texto anterior, el texto a sustituir, y el texto posterior
-void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int fila_dest){
+void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int fila_dest, int booleano){
 
 
     int i,m,k,lon,lon2,contador=0,pos,pos_posterior;
@@ -427,7 +432,12 @@ void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int
     lines almacenaje[100];
 
     FILE *archivo;
-    archivo=fopen("archivo_sustituto.txt","r");
+    if(booleano==0){
+        archivo=fopen("archivo_auxiliar.csv","r");
+    }
+    else if(booleano==1){
+        archivo=fopen("archivo_sustituto.txt","r");
+    }
 
     fseek(archivo,0,SEEK_SET);
     for(i=0;i<=filas;i++){
@@ -435,7 +445,6 @@ void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int
     }
 
     fclose(archivo);
-
 
     FILE *archivo2;
     archivo2=fopen("archivo_sustituto.txt","w");
@@ -450,6 +459,5 @@ void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int
         }
 
     fclose(archivo2);
-
 
 }
