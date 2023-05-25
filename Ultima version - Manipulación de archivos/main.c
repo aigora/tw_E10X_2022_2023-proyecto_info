@@ -9,12 +9,12 @@ int main(){
 
     //lee un archivo y lo copia en uno nuevo (archivo_auxiliar).
     //necesita el nombre del archivo. Ejemplo:
-    //lectura("generacion_por_tecnologias_21_22_puntos.csv",1);
+    lectura("generacion_por_tecnologias_21_22_puntos.csv",1);
 
 
 
     //muestra el documento entero
-    //mostrar_doc(booleano);
+    mostrar_doc(booleano);
 
 
 
@@ -43,6 +43,30 @@ int main(){
     //   printf("\n");
     //}
 
+
+
+//    int i,filas=lectura("generacion_por_tecnologias_21_22.csv",0);
+//    desicion(6,0,'.',5,2);
+//    FILE *pf;
+//    char v1[50];
+//    float x;
+//    pf = fopen("archivo_vectores.txt","r");
+//    if(pf == NULL)
+//    {
+//        printf("Error\n");
+//    }
+//    printf("%i\n", filas);
+//    for(i=0;i<=filas;i++){
+//            fscanf(pf,"%s", &v1[i]);
+//            printf("%s\n", v1);
+//        }
+
+
+
+
+
+
+//    desicion(6,0,'.',5,2);
 
 
 
