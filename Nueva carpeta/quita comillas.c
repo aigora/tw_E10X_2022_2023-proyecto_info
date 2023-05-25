@@ -29,6 +29,10 @@ int main(){
                 }
                 largo--;
             }
+
+            if(datos[j].filai[h]==','){
+                datos[j].filai[h]='.';
+            }
             h++;
         }
     }
