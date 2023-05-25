@@ -159,7 +159,7 @@ int seleccion_dato(int n_fila, int n_columna,char decimal,int fila_fecha,int ele
             pos++;
 
             //Si la fila seleccionada está antes de la fila de fechas se almacena simplemente por el numero de separadores,
-            //ya que no has números con decimales. Se resta 1 en el if debido a que la fila uno se almacena en el espacio cero del vector de estructuras
+            //ya que no hay números con decimales. Se resta 1 en el if debido a que la fila uno se almacena en el espacio cero del vector de estructuras
             if(j<=fila_fecha-1 && select_pos<=columnas){
                 if(pos==select_pos-1){
                     k=i+1;
@@ -460,5 +460,30 @@ void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int
         }
 
     fclose(archivo2);
-
 }
+
+
+
+
+
+//void estadistica()
+//{
+//    FILE *vctor;
+//    int i=0;
+//    int filas=lectura("archivo_vectores.txt",0);
+//    char v1[50];
+//    vctor = fopen("archivo_vectores.txt","r");
+//    if(vctor == NULL)
+//    {
+//        printf("Error al abrir archivo");
+//    }
+//    while(fscanf(vctor,"%c", &v1[i]) != EOF)
+//    {
+//        i++;
+//    }
+//    printf("%c",v1[3]);
+////    for(i=0;i<filas;i++)
+////    {
+////        printf("%f", v1[i]);
+////    }
+//}
