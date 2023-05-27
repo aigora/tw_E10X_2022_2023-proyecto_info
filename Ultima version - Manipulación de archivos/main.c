@@ -22,7 +22,7 @@ int main(){
     //variables: Fila elegida, columna elegida, tipo de separador decimal, fila de fecha,
     //elección mostrar una generación de energía con una columna (1); necesita las primera cuatro variables,
     //sustituir (2); necesita que las dos primeras variables sean la fila de sustitución y la columna de sustitución respectivamente,
-    //también necesita el texto nuevo teniendo sus separadores inciales y finales
+    //también necesita el texto nuevo teniendo sus separadores iniciales y finales
     //Hay que identificar el separador decimal
 
     //mostrar dato
@@ -45,8 +45,9 @@ int main(){
 
 
 
+      estadistica(5);
 //    int i,filas=lectura("generacion_por_tecnologias_21_22.csv",0);
-//    desicion(6,0,'.',5,2);
+//    //desicion(6,0,'.',5,2);
 //    FILE *pf;
 //    char v1[50];
 //    float x;

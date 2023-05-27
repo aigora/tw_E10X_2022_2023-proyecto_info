@@ -6,6 +6,11 @@ typedef struct
     char filai[2000];
 }lines;
 
+typedef struct
+{
+    float num[50];
+}lin;
+
 //Funcion que lee el archivo original y lo copia en un archivo auxiliar
 //entrega un entero que es el número de filas del archivo elegido
 int lectura(char documento[],int inicio){
@@ -461,6 +466,94 @@ void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int
 
     fclose(archivo2);
 }
+
+
+
+
+void estadistica(int n)
+{
+    int i,j=0,filas=10;
+    int columna=24;
+    //desicion(6,0,'.',5,2);
+    lin numeros[filas];
+    FILE *valors;
+
+    for(i=6;i<=filas;i++)
+    {
+        desicion(i,0,'.',5,2);
+        limpiar();
+//      valors=fopen("archivo_vectores_sin_comillas.txt","r");
+        if(valors==NULL)
+        {
+            printf("Error al abrir fichero");
+        }
+        for(i=0;i<columna;i++)
+        {
+            fscanf(valors,"%f",&numeros[j].num[i]);
+        }
+        j++;
+    }
+    for(i=0;i<=filas;i++)
+    {
+        for(j=0;j<24;j++)
+        {
+            printf("%f\n",numeros[i].num[j]);
+        }
+    }
+}
+
+
+
+
+
+
+
+void limpiar()
+{
+    FILE *archivo;
+    archivo=fopen("archivo_vectores.txt","r");
+
+    int i,j,h,largo,filas=lectura("generacion_por_tecnologias_21_22.csv",0);
+
+    lines datos[filas];
+
+    for(i=0;i<filas;i++){
+        fscanf(archivo,"%[^\n]\n",datos[i].filai);
+    }
+
+    for(j=0;j<filas;j++){
+        largo=strlen(datos[j].filai);
+        h=0;
+        while(datos[j].filai[h]!='\0'){
+            if(datos[j].filai[h]=='"'){
+                for(i=h;i<largo;i++){
+                    datos[j].filai[i]=datos[j].filai[i+1];
+                }
+                largo--;
+            }
+
+            if(datos[j].filai[h]==','){
+                datos[j].filai[h]='.';
+            }
+            h++;
+        }
+    }
+
+    FILE *vectores;
+    vectores=fopen("archivo_vectores_sin_comillas.txt","w");
+    for(i=0;i<filas;i++){
+        fprintf(vectores,"%s\n",datos[i].filai);
+    }
+    fclose(archivo);
+    fclose(vectores);
+}
+
+
+
+
+
+
+
 
 
 
