@@ -18,7 +18,6 @@ int main(){
         fscanf(archivo,"%[^\n]\n",datos[i].filai);
     }
 
-
     for(j=0;j<filas;j++){
         largo=strlen(datos[j].filai);
         h=0;
