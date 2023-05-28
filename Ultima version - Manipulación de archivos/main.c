@@ -6,6 +6,108 @@ int main(){
     _Bool booleano;
 
     booleano=0;
+    int i, n, x;
+    char texto_ora[300];
+    do
+        {
+            printf("\t \t Red Electrica\n\n");
+    printf("Elija una de las opciones:\n");
+
+    printf("1.Introduccion\n");
+    printf("2.informacion\n");
+    printf("3.Datos en los ultimos anios\n");
+    printf("4.Oficinas principales\n");
+    printf("5.Calculos estadisticos\n");
+    printf("6.Salir\n");
+
+    scanf("%i", &n);
+
+    switch(n)
+    {
+    case 1:
+        {
+            FILE *archivo = fopen("primer_texto.txt", "r");
+            if(archivo == NULL)
+            {
+                printf("Ups....\n");
+                printf("Hubo un error. Intente de nuevo.");
+
+                return 1;
+            }
+            while(fgets(texto_ora, sizeof(texto_ora),archivo) != NULL)
+            {
+                printf("%s", texto_ora);
+            }
+            fclose(archivo);
+
+            printf("\n\n");
+
+            break;
+        }
+    case 2:
+        {
+            printf("¿Que quieres saber?\n\n");
+            printf("1) La historia de la empresa\n");
+            printf("2) Negocio electrico en Espania e internacional\n");
+            scanf("%i", &n);
+
+            switch(n)
+            {
+            case 1:
+                {
+                    FILE *archivo = fopen("segundo_texto.txt", "r");
+            if(archivo == NULL)
+            {
+                printf("Ups....\n");
+                printf("Hubo un error. Intente de nuevo.");
+
+                return 1;
+            }
+            while(fgets(texto_ora, sizeof(texto_ora),archivo) != NULL)
+            {
+                printf("%s", texto_ora);
+            }
+            fclose(archivo);
+
+            printf("\n\n");
+
+
+                    break;
+                }
+            case 2:
+                {
+                    FILE *archivo = fopen("tercer_texto.txt", "r");
+            if(archivo == NULL)
+            {
+                printf("Ups....\n");
+                printf("Hubo un error. Intente de nuevo.");
+
+                return 1;
+            }
+            while(fgets(texto_ora, sizeof(texto_ora),archivo) != NULL)
+            {
+                printf("%s", texto_ora);
+            }
+            fclose(archivo);
+
+            printf("\n\n");
+
+
+                    break;
+                }
+            default:
+                {
+                    printf("\n\n.......ERROR........");
+                    printf("\n\n");
+                }
+            }
+
+
+            break;
+        }
+    case 3:
+        {
+
 
     //lee un archivo y lo copia en uno nuevo (archivo_auxiliar).
     //necesita el nombre del archivo. Ejemplo:
@@ -43,23 +145,98 @@ int main(){
     //   printf("\n");
     //}
 
+            break;
+        }
+    case 4:
+        {
+            do
+            {
 
+            printf("Tenemos varias oficinas. Dinos si tu ciudad se encuentra dentro o fuera de Espania.\n");
+            printf("1) Dentro de Espania\n");
+            printf("2) Fuera de Espania\n");
+            scanf("%i", &x);
 
+            switch (x)
+            {
+            case 1:
+                {
 
-//    La funcion estadistica necesita 2 enteros que tendran que cumplir las condiciones especificadas en while. Esos 2 enteros hacen referencia a las filas en las que se calcula para cada una su
-//    valor maximo, su minimo ,su promedio y su valor relativo (en el caso de poder realizarlo).El primer entero selecciona la fila de arranque y tiene que ser 6 o mayor sin superar el 23.
-//    El segundo entero selecciona la ultima fila a calcular es decir que pone un limite a los calculos. Tiene que ser de valor 6 o mayor sin superar el 23 y no puede ser menor que el primer entero.
-//    do
-//    {
-//        scanf("%i %i",&x,&y);
-//    }
-//    while((x>=6 && x<=23) && (y>=6 && y<=23) && (x<=y));
+                printf("\t\tPrincipales ciudades:\n\n");
+                FILE *archivo = fopen("cuarto_texto.txt", "r");
+            if(archivo == NULL)
+            {
+                printf("Ups....\n");
+                printf("Hubo un error. Intente de nuevo.");
+
+                return 1;
+            }
+            while(fgets(texto_ora, sizeof(texto_ora),archivo) != NULL)
+            {
+                printf("%s", texto_ora);
+            }
+            fclose(archivo);
+
+            printf("\n\n");
+            break;
+
+                }
+
+            case 2:
+                {
+                printf("........Estamos trabajando en ello........\n");
+                printf("\n\n");
+                break;
+                }
+            default:
+                {
+                 printf("ERROR!!!. Solo puedes elegir entre las dos opciones.");
+                 printf("\n\n");
+                 break;
+                }
+            }
+            }
+            while (x>=3 || x<=0);
+
+            break;
+        }
+    case 5:
+        {
+            printf("\n\n En esta parte podemos ver algunos calculos estadisticos de los diferentes campos en estos ultimos anios: \n");
+            printf("(como por ejemplo: maximos, minimos y valor relativo)\n");
+            printf("OBS: Estos dato estan divididos por filas y empieza por la fila 6 hasta el 23, donde estan ubicados los diferentes tipos en los ultimos 24 meses\n.");
+            printf("Elije que fila quieres saber:\n");
+            //    La funcion estadistica necesita 2 enteros que tendran que cumplir las condiciones especificadas en while.
+            //Esos 2 enteros hacen referencia a las filas en las que se calcula para cada una su
+//    valor maximo, su minimo ,su promedio y su valor relativo (en el caso de poder realizarlo).El primer entero selecciona la fila de arranque
+//    y tiene que ser 6 o mayor sin superar el 23.
+//    El segundo entero selecciona la ultima fila a calcular es decir que pone un limite a los calculos. Tiene que ser de valor 6 o mayor
+//    sin superar el 23 y no puede ser menor que el primer entero.
+      do
+      {
+
+          scanf("%i %i",&x,&y);
+      }
+      while((x>=6 && x<=23) && (y>=6 && y<=23) && (x<=y));
 //    estadistica(x,y);
-
-
       //ejemplo para ver el uso de la funcion y eliminar al tener acabado el trabajo dejando el do-while de arriba
-      estadistica(6,23);
+      estadistica(x,y);
 
+            break;
+        }
+    default:
+        {
+            printf("\n\n");
+            break;
+        }
+
+
+    }
+
+
+
+        }
+    while (n>=6 || n<=0);
 
 
 
