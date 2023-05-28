@@ -16,7 +16,7 @@ de un valor determinado y distintas funciones estadísticas.
 
 Desarrollar un programa que permita aplicar las siguientes funcionalidades a partir archivo Excel:
 
-1- Leer y almacenar datos.
-2- Mostrar el archivo entero en pantalla, un dato en específico o una columna de datos.
-3- Editar o sustituir elementos.
-5- Distintas funciones estadísticas.
+1. Leer y almacenar datos.
+2. Mostrar el archivo entero en pantalla, un dato en específico o una columna de datos.
+3. Editar o sustituir elementos.
+5. Distintas funciones estadísticas.
