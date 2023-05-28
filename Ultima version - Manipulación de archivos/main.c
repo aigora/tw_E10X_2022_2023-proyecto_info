@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<string.h>
 #include "funciones.h"
 
 int main(){
@@ -6,7 +7,7 @@ int main(){
     _Bool booleano;
 
     booleano=0;
-    int i, n, x;
+    int i, n, x, y;
     char texto_ora[300];
     do
         {
