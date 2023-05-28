@@ -8,7 +8,7 @@ de un valor determinado y distintas funciones estadísticas.
 ## Integrantes del equipo
 
 
-José Antonio Anampa Quispe, [ https://github.com/JoseAnampa ]
+José Antonio Anampa Quispe, [https://github.com/JoseAnampa]
 
 Adrián Vallejo Gil @AdriUpm
 
