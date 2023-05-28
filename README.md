@@ -1,7 +1,9 @@
-# [Título del trabajo]
-Proyecto_Info
+# [Proyecto_Info]
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+
+[A partir de la lectura de un fichero entregado, se escriben y se adaptan los valores de este en nuevos 
+ficheros para poder implementar diversas funciones como la busqueda de un dato especifico, la sustitucion
+de un valor determinado y distintas funciones estadísticas.]
 
 ## Integrantes del equipo
 
