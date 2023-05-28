@@ -8,8 +8,14 @@ typedef struct
 
 typedef struct
 {
-    float num[50];
+    double num[50];
 }lin;
+
+typedef struct
+{
+    char tec[6];
+}energia;
+
 
 //Funcion que lee el archivo original y lo copia en un archivo auxiliar
 //entrega un entero que es el número de filas del archivo elegido
@@ -470,35 +476,196 @@ void sustitucion(char texto[],char texto_sust[],int columna,char separador[],int
 
 
 
-void estadistica(int n)
-{
-    int i,j=0,filas=10;
-    int columna=24;
-    //desicion(6,0,'.',5,2);
-    lin numeros[filas];
-    FILE *valors;
 
-    for(i=6;i<=filas;i++)
+
+
+
+
+//Funcion cuya utilidad es hallar el valor maximo de una serie de datos, es decir, datos almacenados en un vector de tipo double
+//La funcion devuelve un valor de tipo double y tiene como argumentos un vector de tipo double y un valor entero entregados en la funcion estadistica.
+
+double MX(double v[],int n)
+{
+    int i;
+    double mx;
+    mx=v[0];
+    for(i=0;i<n;i++)
+    {
+        if(v[i]>mx)
+        {
+            mx=v[i];
+        }
+    }
+    return mx;
+}
+
+
+
+
+
+//Funcion cuya utilidad es hallar el valor minimo de una serie de datos, es decir, datos almacenados en un vector de tipo double.
+//La funcion devuelve un valor de tipo double y tiene como argumentos un vector de tipo double y un valor entero entregados en la funcion estadistica.
+
+double MN(double v[],int n)
+{
+    int i;
+    double mn;
+    mn=v[0];
+    for(i=0;i<n;i++)
+    {
+        if(v[i]<mn)
+        {
+            mn=v[i];
+        }
+    }
+    return mn;
+}
+
+
+
+
+
+
+//Funcion cuya utilidad es hallar el valor promedio de una serie de datos, es decir, datos almacenados en un vector de tipo double
+//La funcion devuelve un valor de tipo double y tiene como argumentos un vector de tipo double y un valor entero entregados en la funcion estadistica.
+
+double PRO(double v[],int n)
+{
+    int i;
+    double pro=0.0;
+    for(i=0;i<n;i++)
+    {
+        pro=pro+v[i];
+    }
+    pro=pro/n;
+    return pro;
+}
+
+
+
+
+
+
+
+//Esta funcion sirve para calcular el valor maximo, el minimo, el promedio y el valor relativo (siendo m igual a 23) de un fichero que se crea en la funcion limpiar y se lee en esta guardando los datos
+//en vectores de estructuras para poder aplicar los calculos estadisticos que seran presentados en un fichero aparte "estadistica.txt" y en la pantalla (a parte en la pantalla se imprime los datos
+//de cada tecnologia en columna). Esta funcion no devuelve nada (void) y como argumentos hay que introducir dos enteros que seran la fila de arranque y la fila de finalizacion respectivamente,
+//señalizando las filas en las que se calculan esos valores estadisticos. El primer entero tiene que ser 6 (el 6 marca la fila de hidraulica) o mayor sin superar el 23 y el segundo termino tiene que
+//ser 6 o mayor sin superar al 23 y no puede ser menor que el primer termino, si el segundo termino es 23 se calcula el valor relativo de las filas contenidas y seleccionadas entre ambos enteros.
+//Esta funcion hace llamada a la funcion desicion y la funcion limpiar, explicadas junto a su declaracion.
+
+
+void estadistica(int n, int m)
+{
+    FILE *pf;
+    FILE *estad;
+    int i,j,k,l,filas=lectura("archivo_vectores.txt",0);
+    lin v1[filas];
+    lin rel[filas];
+    double mx[filas],mn[filas],pro[filas];
+    energia tecno[18] = {
+    {"Hidra"},
+    {"Turbi"},
+    {"Nucle"},
+    {"Carbo"},
+    {"Fuel "},
+    {"Motor"},
+    {"Turbi"},
+    {"Turbi"},
+    {"Ciclo"},
+    {"Hidro"},
+    {"Eolic"},
+    {"Solar"},
+    {"Solar"},
+    {"Otras"},
+    {"Cogen"},
+    {"Nreno"},
+    {"Renov"},
+    {"Total"},
+    };
+
+
+    k=0;
+    for(i=n;i<=m;i++)
     {
         desicion(i,0,'.',5,2);
         limpiar();
-//      valors=fopen("archivo_vectores_sin_comillas.txt","r");
-        if(valors==NULL)
+        pf=fopen("archivo_vectores_sin_comillas.txt","r");
+        if(pf==NULL)
         {
-            printf("Error al abrir fichero");
+            printf("Error");
         }
-        for(i=0;i<columna;i++)
+        for(j=0;j<filas;j++)
         {
-            fscanf(valors,"%f",&numeros[j].num[i]);
+            fscanf(pf,"%lf",&v1[k].num[j]);
         }
-        j++;
+        k++;
     }
-    for(i=0;i<=filas;i++)
+    for(i=0;i<=m-n;i++)
     {
-        for(j=0;j<24;j++)
+        mx[i]=MX(v1[i].num,filas);
+        mn[i]=MN(v1[i].num,filas);
+        pro[i]=PRO(v1[i].num,filas);
+    }
+    k=0;
+    if(m==23)
+    {
+        for(i=0;i<filas;i++)
         {
-            printf("%f\n",numeros[i].num[j]);
+            for(j=0;j<m-n;j++)
+            {
+                rel[i].num[j]=(v1[j].num[i]/v1[m-n].num[i])*100;
+            }
         }
+    }
+
+
+    estad=fopen("estadistica.txt","w");
+    if(estad==NULL)
+    {
+        printf("Error al abrir fichero");
+    }
+    l=n-6;
+    fprintf(estad,"\tMaximo\t\tMinimo\t\tPromedio\n");
+    for(i=0;i<=m-n;i++)
+    {
+        fprintf(estad,"%s\t%f\t%f\t%f\n",tecno[l].tec,mx[i],mn[i],pro[i]);
+        l++;
+    }
+    fprintf(estad,"\nValor relativo mensual:\n");
+    for(i=0;i<filas;i++)
+    {
+        l=n-6;
+        for(j=0;j<m-n;j++)
+        {
+            fprintf(estad,"%s\t%f\n",tecno[l].tec,rel[i].num[j]);
+            l++;
+        }
+        fprintf(estad,"**********\n");
+    }
+
+
+    printf("---------------\n");
+    for(j=0;j<=m-n;j++)
+    {
+        for(i=0;i<filas;i++)
+        {
+            printf("%f\n",v1[j].num[i]);
+        }
+        printf("---------------\n");
+    }
+    for(i=0;i<=m-n;i++)
+    {
+        printf("%f\t%f\t%f\n",mx[i],mn[i],pro[i]);
+    }
+    printf("\nValor relativo mensual:\n");
+    for(i=0;i<filas;i++)
+    {
+        for(j=0;j<m-n;j++)
+        {
+            printf("%f\n",rel[i].num[j]);
+        }
+        printf("**********\n");
     }
 }
 
@@ -508,13 +675,19 @@ void estadistica(int n)
 
 
 
+
+
+
+//Esta funcion sirve para "limpiar" el fichero archivo_vectores creado anteriormente gracias a la funcion desicion de forma que en esta funcion se crea un fichero
+//nuevo que contiene los valores de cada tecnologia en forma de columna quitando los caracteres que no sean numeros para poder asi guardar estos datos en un vector de estructuras.
+//La funcion no tiene argumentos y no devuelve nada (void).
+
 void limpiar()
 {
     FILE *archivo;
     archivo=fopen("archivo_vectores.txt","r");
 
-    int i,j,h,largo,filas=lectura("generacion_por_tecnologias_21_22.csv",0);
-
+    int i,j,h,largo,filas=lectura("archivo_vectores.txt",0);
     lines datos[filas];
 
     for(i=0;i<filas;i++){
@@ -558,25 +731,3 @@ void limpiar()
 
 
 
-
-//void estadistica()
-//{
-//    FILE *vctor;
-//    int i=0;
-//    int filas=lectura("archivo_vectores.txt",0);
-//    char v1[50];
-//    vctor = fopen("archivo_vectores.txt","r");
-//    if(vctor == NULL)
-//    {
-//        printf("Error al abrir archivo");
-//    }
-//    while(fscanf(vctor,"%c", &v1[i]) != EOF)
-//    {
-//        i++;
-//    }
-//    printf("%c",v1[3]);
-////    for(i=0;i<filas;i++)
-////    {
-////        printf("%f", v1[i]);
-////    }
-//}

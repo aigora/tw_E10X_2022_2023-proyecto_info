@@ -45,23 +45,20 @@ int main(){
 
 
 
-      estadistica(5);
-//    int i,filas=lectura("generacion_por_tecnologias_21_22.csv",0);
-//    //desicion(6,0,'.',5,2);
-//    FILE *pf;
-//    char v1[50];
-//    float x;
-//    pf = fopen("archivo_vectores.txt","r");
-//    if(pf == NULL)
-//    {
-//        printf("Error\n");
-//    }
-//    printf("%i\n", filas);
-//    for(i=0;i<=filas;i++){
-//            fscanf(pf,"%s", &v1[i]);
-//            printf("%s\n", v1);
-//        }
 
+//    La funcion estadistica necesita 2 enteros que tendran que cumplir las condiciones especificadas en while. Esos 2 enteros hacen referencia a las filas en las que se calcula para cada una su
+//    valor maximo, su minimo ,su promedio y su valor relativo (en el caso de poder realizarlo).El primer entero selecciona la fila de arranque y tiene que ser 6 o mayor sin superar el 23.
+//    El segundo entero selecciona la ultima fila a calcular es decir que pone un limite a los calculos. Tiene que ser de valor 6 o mayor sin superar el 23 y no puede ser menor que el primer entero.
+//    do
+//    {
+//        scanf("%i %i",&x,&y);
+//    }
+//    while((x>=6 && x<=23) && (y>=6 && y<=23) && (x<=y));
+//    estadistica(x,y);
+
+
+      //ejemplo para ver el uso de la funcion y eliminar al tener acabado el trabajo dejando el do-while de arriba
+      estadistica(6,23);
 
 
 

@@ -6,7 +6,7 @@ typedef struct{
 }lineas;
 
 int main(){
-    int i,j,filas=17;
+    int i,j,filas=24;
 
     FILE *archivo;
     //el nombre del archivo variará si los datos tienen comillas o no
