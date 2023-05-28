@@ -4,17 +4,19 @@
 
 int main()
 {
-    int i, n;
+    int i, n, x;
     char texto_ora[300];
     do
         {
-            printf("\t \t Red Electrica\n");
+            printf("\t \t Red Electrica\n\n");
     printf("Elija una de las opciones:\n");
+
     printf("1.Introduccion\n");
     printf("2.informacion\n");
     printf("3.Datos en los ultimos años\n");
     printf("4.Oficinas principales\n");
     printf("5.Eaaa\n");
+
     scanf("%i", &n);
 
     switch(n)
@@ -34,6 +36,8 @@ int main()
                 printf("%s", texto_ora);
             }
             fclose(archivo);
+
+            printf("\n\n");
 
             break;
         }
@@ -62,6 +66,8 @@ int main()
             }
             fclose(archivo);
 
+            printf("\n\n");
+
 
                     break;
                 }
@@ -81,12 +87,12 @@ int main()
             }
             fclose(archivo);
 
+            printf("\n\n");
+
 
                     break;
                 }
             }
-
-
 
 
             break;
@@ -98,20 +104,64 @@ int main()
         }
     case 4:
         {
+            do
+            {
+
+            printf("Tenemos varias oficinas. Dinos si tu ciudad se encuentra dentro o fuera de Espania.\n");
+            printf("1) Dentro de Espania\n");
+            printf("2) Fuera de Espania\n");
+            scanf("%i", &x);
+
+            switch (x)
+            {
+            case 1:
+                {
+
+                printf("\t\tPrincipales ciudades:\n\n");
+                FILE *archivo = fopen("cuarto_texto.txt", "r");
+            if(archivo == NULL)
+            {
+                printf("Ups....\n");
+                printf("Hubo un error. Intente de nuevo.");
+
+                return 1;
+            }
+            while(fgets(texto_ora, sizeof(texto_ora),archivo) != NULL)
+            {
+                printf("%s", texto_ora);
+            }
+            fclose(archivo);
+
+            printf("\n\n");
+            break;
+
+                }
+
+            case 2:
+                {
+                printf("........Estamos trabajando en ello........\n");
+                printf("\n\n");
+                break;
+                }
+            default:
+                {
+                 printf("ERROR!!!. Solo puedes elegir entre las dos opciones.");
+                 printf("\n\n");
+                 break;
+                }
+            }
+            }
+            while (x>=3 || x<=0);
 
             break;
         }
-    case 5:
-        {
 
-            break;
-        }
     }
 
 
 
         }
-    while (n>=6 || n<=0);
+    while (n>=5 || n<=0);
 
 
     return 0;
