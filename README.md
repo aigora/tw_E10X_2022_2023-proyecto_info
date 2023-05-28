@@ -7,10 +7,9 @@ de un valor determinado y distintas funciones estadísticas.
 
 ## Integrantes del equipo
 
-
-José Antonio Anampa Quispe, [https://github.com/JoseAnampa]
-
-Adrián Vallejo Gil @AdriUpm
+- Adrián Vallejo Gil [adrianvalgil](https://github.com/AdriUpm)
+- José Antonio Anampa Quispe [JoseAnampa](https://github.com/JoseAnampa)
+- Ruddy Alejandro Escobar Ordoñez [ruddy02](https://github.com/ruddy02)
 
 
 ## Objetivos del trabajo
