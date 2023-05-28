@@ -13,9 +13,9 @@ int main()
 
     printf("1.Introduccion\n");
     printf("2.informacion\n");
-    printf("3.Datos en los ultimos años\n");
+    printf("3.Datos en los ultimos anios\n");
     printf("4.Oficinas principales\n");
-    printf("5.Eaaa\n");
+    printf("5.Salir\n");
 
     scanf("%i", &n);
 
@@ -166,7 +166,7 @@ int main()
 
 
         }
-    while (n>=5 || n<=0);
+    while (n>5 || n<=0);
 
 
     return 0;
