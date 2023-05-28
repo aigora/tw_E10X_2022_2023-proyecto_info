@@ -92,6 +92,11 @@ int main()
 
                     break;
                 }
+            default:
+                {
+                    printf("\n\n.......ERROR........");
+                    printf("\n\n");
+                }
             }
 
 
