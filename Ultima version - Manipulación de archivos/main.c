@@ -365,7 +365,7 @@ int main(){
 
 
         }
-    while (n>=6 || n<=0);
+    while (n>6 || n<=0);
 
 
 
