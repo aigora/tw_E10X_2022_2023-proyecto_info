@@ -286,6 +286,7 @@ int main(){
 
     break;  //REVISAR SI LAS FUNCIONES ESTADÍSTICAS OPERAN DE MANERA CORRECTA
     case 5:
+            system("cls");
             printf("\n\n En esta parte podemos ver algunos calculos estadisticos de los diferentes campos en estos ultimos anios: \n");
             printf("(como por ejemplo: maximos, minimos y valor relativo)\n");
             printf("OBS: Estos dato estan divididos por filas y empieza por la fila 6 hasta el 23, donde estan ubicados los diferentes tipos en los ultimos 24 meses\n.");
@@ -296,16 +297,14 @@ int main(){
             //    y tiene que ser 6 o mayor sin superar el 23.
             //    El segundo entero selecciona la ultima fila a calcular es decir que pone un limite a los calculos. Tiene que ser de valor 6 o mayor
             //    sin superar el 23 y no puede ser menor que el primer entero.
-      do
-      {
-
-          scanf("%i %i",&x,&y);
-      }
-      while((x>=6 && x<=23) && (y>=6 && y<=23) && (x<=y));
-        //    estadistica(x,y);
-        //ejemplo para ver el uso de la funcion y eliminar al tener acabado el trabajo dejando el do-while de arriba
-      estadistica(x,y);
-
+            //fflush(stdin);
+            lectura("generacion_por_tecnologias_21_22_puntos.csv",1);
+            do
+            {
+                scanf("%i %i",&x,&y);
+            }
+            while((x<6 || x>23) || (y<6 || y>23) || (x>y));
+            estadistica(6,23);
     break;
     case 6:
         system("cls");
