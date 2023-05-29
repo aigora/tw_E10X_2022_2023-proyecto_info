@@ -30,7 +30,7 @@ int lectura(char documento[],int inicio){
     archivo=fopen(documento,"r");
 
     if(archivo==NULL){
-        printf("No se ha encontrado el archivo\n");
+        printf("No se ha encontrado el archivoholi\n");
         return -1;
     }
     else{
