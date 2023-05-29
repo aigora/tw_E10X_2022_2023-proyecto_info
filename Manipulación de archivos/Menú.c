@@ -102,11 +102,11 @@ int main(){
             printf("\n\n");
 
             return main();
-            break;
-            default:
-                printf("\n\n.......ERROR........");
-                printf("\n\n");
-            break;
+        break;
+        default:
+            system("cls");
+            return main();
+        break;
         }
     break;
     case 3:
