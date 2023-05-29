@@ -4,11 +4,15 @@
 
 int main(){
 
+    int nmenu,eleccion,fil,col,fil_fecha;
+    char texto[50],texto_sust[50],sep_decimal,textos;
+    int i, n, x, y, filas;
+    char texto_ora[300];
+
     _Bool booleano;
 
     booleano=0;
-    int i, n, x, y;
-    char texto_ora[300];
+
     do
         {
             printf("\t \t Red Electrica\n\n");
@@ -108,16 +112,139 @@ int main(){
         }
     case 3:
         {
+            printf("1-Leer un archivo\n");
+            printf("2-Mostrar el archivo en pantalla\n");
+            printf("3-Mostrar un dato en especifico en pantalla\n");
+            printf("4-Editar o sustituir un dato\n");
+            printf("5-Mostrar la primera columna (titulos) y una columna entera de datos en específico\n");
+            printf("6-Mostrar el archivo con la sustitucion en pantalla\n");
+            printf("7-Seleccionar una columna entera de datos para funciones estadisticas\n");
+            printf("8-Seleccionar una fila entera de datos para funciones estadisticas\n");
+            printf("9-Salir\n");
+            printf("\n\nPresiona solamente numeros: ");
+
+            scanf("%i",&nmenu);
+
+    switch(nmenu){
+        case 1:
+            system("cls");
+            printf("Ingrese el nombre del archivo con su extension.\n");
+            printf("Ejemplo: generacion_energia.csv\n\n");
+            scanf("%s",texto);
+            lectura(texto,1);
+
+            system("cls");
+            return main();
+        break;
+        case 2:
+            system("cls");
+            mostrar_doc(0);
+            printf("\n\n");
+            return main();
+        break;
+        case 3:
+            system("cls");
+            printf("Ingrese la fila y la columna del dato deseado y la fila corresponde a las fechas del modelo de archivo: ");
+            scanf("%i %i %i",&fil,&col,&fil_fecha);
+            printf("Ingrese el tipo de separador decimal: \n");
+            fflush(stdin);
+            scanf("%c",&sep_decimal);
+            seleccion_dato(fil,col,sep_decimal,fil_fecha,1,";texto basura;",0);
+
+            printf("\n\n");
+            return main();
+        break;
+        case 4:
+            system("cls");
+            printf("Ingrese la fila y la columna del dato deseado y la fila corresponde a las fechas del modelo de archivo: ");
+            scanf("%i %i %i",&fil,&col,&fil_fecha);
+            printf("Ingrese el tipo de separador decimal: \n");
+            fflush(stdin);
+            scanf("%c",&sep_decimal);
+            printf("Ingrese el texto nuevo con los separadores al inicio y al final de este y sin espacios: ");
+            scanf("%s",texto_sust);
+            seleccion_dato(fil,col,sep_decimal,fil_fecha,2,texto_sust,booleano);
+            system("cls");
+            return main();
+        break;
+        case 5:
+            system("cls");
+            printf("Seleccione la columna de datos y la fila corresponde a las fechas del modelo de archivo: ");
+            scanf("%i %i",&col,&fil_fecha);
+            printf("Ingrese el tipo de separador decimal: \n");
+            fflush(stdin);
+            scanf("%c",&sep_decimal);
+            system("cls");
+            for(i=5;i<=filas;i++){
+               seleccion_dato(i,col,sep_decimal,fil_fecha,1,"texto basura",0);
+               printf("\n");
+            }
+
+            printf("\n\n");
+            return main();
+        break;
+        case 6:
+            system("cls");
+            mostrar_doc(1);
+            printf("\n\n");
+            return main();
+        break;
+        case 7:
+            system("cls");
+            printf("Seleccione la columna deseada y la fila corresponde a las fechas del modelo de archivo: ");
+            scanf("%i %i",&col,&fil_fecha);
+            printf("Ingrese el tipo de separador decimal: \n");
+            fflush(stdin);
+            scanf("%c",&sep_decimal);
+            desicion(0,col,sep_decimal,fil_fecha,1);
+            system("cls");
+            return main();
+        break;
+        case 8:
+            system("cls");
+            printf("Seleccione la fila deseada y la fila corresponde a las fechas del modelo de archivo: ");
+            scanf("%i %i",&fil,&fil_fecha);
+            printf("Ingrese el tipo de separador decimal: \n");
+            fflush(stdin);
+            scanf("%c",&sep_decimal);
+            desicion(fil,0,sep_decimal,fil_fecha,2);
+
+            system("cls");
+            return main();
+        break;
+        case 9:
+            system("cls");
+            printf("¿Seguro que quieres salir?\n");
+            printf("\t1-Si\n\t2-Volver\n");
+            scanf("%i",&nmenu);
+            switch(nmenu){
+                case 1:
+                    return 0;
+                break;
+                case 2:
+                    system("cls");
+                    return main();
+                break;
+                default:
+                break;
+            }
+        break;
+
+        default:
+            system("cls");
+            return main();
+        break;
+    }
 
 
     //lee un archivo y lo copia en uno nuevo (archivo_auxiliar).
     //necesita el nombre del archivo. Ejemplo:
-    lectura("generacion_por_tecnologias_21_22_puntos.csv",1);
+    //lectura("generacion_por_tecnologias_21_22_puntos.csv",1);
 
 
 
     //muestra el documento entero
-    mostrar_doc(booleano);
+    //mostrar_doc(booleano);
 
 
 
