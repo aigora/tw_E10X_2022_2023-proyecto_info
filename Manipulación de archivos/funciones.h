@@ -30,7 +30,7 @@ int lectura(char documento[],int inicio){
     archivo=fopen(documento,"r");
 
     if(archivo==NULL){
-        printf("No se ha encontrado el archivoholi\n");
+        printf("No se ha encontrado el archivo\n");
         return -1;
     }
     else{
@@ -550,7 +550,7 @@ double PRO(double v[],int n)
 //Esta funcion sirve para calcular el valor maximo, el minimo, el promedio y el valor relativo (siendo m igual a 23) de un fichero que se crea en la funcion limpiar y se lee en esta guardando los datos
 //en vectores de estructuras para poder aplicar los calculos estadisticos que seran presentados en un fichero aparte "estadistica.txt" y en la pantalla (a parte en la pantalla se imprime los datos
 //de cada tecnologia en columna). Esta funcion no devuelve nada (void) y como argumentos hay que introducir dos enteros que seran la fila de arranque y la fila de finalizacion respectivamente,
-//señalizando las filas en las que se calculan esos valores estadisticos. El primer entero tiene que ser 6 (el 6 marca la fila de hidraulica) o mayor sin superar el 23 y el segundo termino tiene que
+//señalizando las filas en las que se calculan esos valores estadisticos. El primer entero tiene que ser el 6 (el 6 marca la fila de hidraulica) o mayor sin superar el 23 y el segundo termino tiene que
 //ser 6 o mayor sin superar al 23 y no puede ser menor que el primer termino, si el segundo termino es 23 se calcula el valor relativo de las filas contenidas y seleccionadas entre ambos enteros.
 //Esta funcion hace llamada a la funcion desicion y la funcion limpiar, explicadas junto a su declaracion.
 
@@ -559,7 +559,7 @@ void estadistica(int n, int m)
 {
     FILE *pf;
     FILE *estad;
-    int i,j,k,l,filas=lectura("archivo_vectores.txt",0);
+    int i,j,k,l,filas=lectura("archivo_auxiliar.csv",0)+1;
     lin v1[filas];
     lin rel[filas];
     double mx[filas],mn[filas],pro[filas];

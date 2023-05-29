@@ -284,27 +284,20 @@ int main(){
         }
         while (x>=3 || x<=0);
 
-    break;  //REVISAR SI LAS FUNCIONES ESTADÍSTICAS OPERAN DE MANERA CORRECTA
+    break;
     case 5:
             system("cls");
             printf("\n\n En esta parte podemos ver algunos calculos estadisticos de los diferentes campos en estos ultimos anios: \n");
             printf("(como por ejemplo: maximos, minimos y valor relativo)\n");
             printf("OBS: Estos dato estan divididos por filas y empieza por la fila 6 hasta el 23, donde estan ubicados los diferentes tipos en los ultimos 24 meses\n.");
             printf("Elije que fila quieres saber:\n");
-            //    La funcion estadistica necesita 2 enteros que tendran que cumplir las condiciones especificadas en while.
-            //    Esos 2 enteros hacen referencia a las filas en las que se calcula para cada una su
-            //    valor maximo, su minimo ,su promedio y su valor relativo (en el caso de poder realizarlo).El primer entero selecciona la fila de arranque
-            //    y tiene que ser 6 o mayor sin superar el 23.
-            //    El segundo entero selecciona la ultima fila a calcular es decir que pone un limite a los calculos. Tiene que ser de valor 6 o mayor
-            //    sin superar el 23 y no puede ser menor que el primer entero.
-            //fflush(stdin);
             lectura("generacion_por_tecnologias_21_22_puntos.csv",1);
             do
             {
                 scanf("%i %i",&x,&y);
             }
-            while((x<6 || x>23) || (y<6 || y>23) || (x>y));
-            estadistica(6,23);
+            while((x<6 || x>23) || (y<6 || y>23) ||(x>y));
+            estadistica(x,y);
     break;
     case 6:
         system("cls");
