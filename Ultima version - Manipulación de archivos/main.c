@@ -112,6 +112,7 @@ int main(){
         }
     case 3:
         {
+            printf("En esta parte tiene diferentes opciones a la que elegir, escoge una de ellas:\n\n");
             printf("1-Leer un archivo\n");
             printf("2-Mostrar el archivo en pantalla\n");
             printf("3-Mostrar un dato en especifico en pantalla\n");
@@ -339,13 +340,15 @@ int main(){
 //    valor maximo, su minimo ,su promedio y su valor relativo (en el caso de poder realizarlo).El primer entero selecciona la fila de arranque
 //    y tiene que ser 6 o mayor sin superar el 23.
 //    El segundo entero selecciona la ultima fila a calcular es decir que pone un limite a los calculos. Tiene que ser de valor 6 o mayor
-//    sin superar el 23 y no puede ser menor que el primer entero. Por ejemplo estadistica(6,23) mostraria el maximo, el minimo, el promedio y el valor relativo de todas las filas.
+//    sin superar el 23 y no puede ser menor que el primer entero.
       do
       {
 
           scanf("%i %i",&x,&y);
       }
       while((x>=6 && x<=23) && (y>=6 && y<=23) && (x<=y));
+//    estadistica(x,y);
+      //ejemplo para ver el uso de la funcion y eliminar al tener acabado el trabajo dejando el do-while de arriba
       estadistica(x,y);
 
             break;
